@@ -10,7 +10,8 @@
     "e2e": "ng e2e",
     "buildlib": "ng build vscode-extension-webview-angular",
     "npmpack": "cd dist/vscode-extension-webview-angular && npm pack",
-    "package": "npm run buildlib && npm run npmpack"
+    "package": "npm run buildlib && npm run npmpack",
+    "publish:next": "npm run buildlib && cd dist/vscode-extension-webview-angular && npm version $(semver $npm_package_version)-next.$(git rev-parse --short HEAD) -no-git-tag-version && npm pack && npm publish pivotal-tools-vscode-extension-webview-angular-$(semver $npm_package_version)-next.$(git rev-parse --short HEAD).tgz --tag next --registry https://repo.spring.io/api/npm/npm-snapshot-local && npm version $(semver $npm_package_version) -no-git-tag-version"
   },
   "private": true,
   "dependencies": {
